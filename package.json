@@ -1,0 +1,26 @@
+{
+  "name": "midi-broadcaster",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^2.0.4",
+    "socket.io": "^2.3.0"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/daniel-mckemie/midi-broadcaster.git"
+  },
+  "bugs": {
+    "url": "https://github.com/daniel-mckemie/midi-broadcaster/issues"
+  },
+  "homepage": "https://github.com/daniel-mckemie/midi-broadcaster#readme",
+  "description": ""
+}
