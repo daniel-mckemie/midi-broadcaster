@@ -12,10 +12,13 @@
   </head>
 
   <body>
-    <div>
-      <button id="starter">Start</button>
-      <button id="broadcaster">Broadcast</button>
+    <div>      
+      <input type="button" value="SET CONTROLLER" id="broadcaster"></input>
+      <select id="midi-inputs">
+        <option value="" selected disabled hidden>Choose MIDI port</option>
+      </select>
       
+
       <div class="slidecontainer">
         <input type="range" min="0" max="127" value="50" class="slider" id="myRange">
       </div>
