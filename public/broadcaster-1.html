@@ -15,17 +15,16 @@
     <div>      
       <input type="button" value="SET CONTROLLER" id="broadcaster"></input>
       <select id="midi-inputs">
-        <option value="" selected disabled hidden>Choose MIDI port</option>
+        <option value="" selected disabled hidden>Choose MIDI Input</option>
       </select>
       
-
-      <div class="slidecontainer">
-        <input type="range" min="0" max="127" value="50" class="slider" id="myRange">
+      <div class="flex-grid">
+        <div class="row" id="info"></div>
       </div>
-      </form>
+      
     </div>
     <script src="/socket.io/socket.io.js"></script>
     <script src="webmidi.min.js"></script>
-    <script src="host.js"></script>
+    <script src="broadcaster-1.js"></script>
   </body>
 </html>

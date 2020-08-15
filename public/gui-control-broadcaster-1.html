@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title></title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />    
+    <link rel="stylesheet" type="text/css" href="./styles/style.css">
+    
+
+  </head>
+
+  <body>
+    <div>      
+
+      <select id="midi-transports">
+        <option value="" selected disabled hidden>Choose output link</option>
+      </select>
+      
+      <!-- <form action="setSliderAttributes()">
+        <label for="channel">Channel:</label><br>
+        <input type="text" id="channel" name="channel"><br>
+        <label for="cc">CC:</label><br>
+        <input type="text" id="cc" name="cc"><br><br>
+        <input type="submit" value="Submit">
+      </form>  -->
+
+      <div class="slidecontainer">
+        <input type="range" min="0" max="127" value="50" class="slider" id="myRange">
+      </div>
+
+      <div class="flex-grid">
+        <div class="row" id="info"></div>
+      </div>
+      
+    </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="webmidi.min.js"></script>
+    <script src="gui-control-broadcaster-1.js"></script>
+  </body>
+</html>

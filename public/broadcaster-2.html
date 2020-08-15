@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title></title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />    
+    <link rel="stylesheet" type="text/css" href="./styles/style.css">
+    
+
+  </head>
+
+  <body>
+    <div>      
+      <input type="button" value="SET CONTROLLER" id="broadcaster"></input>
+      <select id="midi-inputs">
+        <option value="" selected disabled hidden>Choose MIDI Input</option>
+      </select>
+      
+
+      <div class="flex-grid">
+        <div class="row" id="info"></div>
+      </div>
+
+    </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="webmidi.min.js"></script>
+    <script src="broadcaster-2.js"></script>
+  </body>
+</html>

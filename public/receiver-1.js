@@ -1,6 +1,6 @@
 const socket = io.connect('/');
 
-let infoDiv = document.getElementById('info');
+const infoDiv = document.getElementById('info');
 
 const midiOutputSelect = document.getElementById('midi-outputs');
 
@@ -20,19 +20,15 @@ WebMidi.enable(function (err) {
     }
     midiOutputSelect.addEventListener('change', getMidiOutput)
     
-    socket.on('midiTransport', function (data) {
-      console.log(data.controller, data.value, data.channel)
-      infoDiv.innerHTML = (data.value);
-      output.sendControlChange(data.controller, data.value, data.channel);      
+    socket.on('midiTransport-1', function (data) {
+      console.log(data.channel, data.cc, data.value)
+      infoDiv.innerHTML = (`Chan: ${data.channel} / CC: ${data.cc} / Value: ${data.value}`);
+      output.sendControlChange(data.cc, data.value, data.channel);      
     })
   }
 });
 
 
-
-socket.on('midiTransport', function(data) {
-  infoDiv.innerHTML = (data.channel, data.cc, data.value);
-})
 
 
 

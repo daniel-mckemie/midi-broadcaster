@@ -2,6 +2,7 @@ const socket = io.connect('/');
 
 
 const midiInputSelect = document.getElementById('midi-inputs');
+const infoDiv = document.getElementById('info');
 
 WebMidi.enable(function (err) {
   if (err) {
@@ -19,26 +20,9 @@ WebMidi.enable(function (err) {
       return input = WebMidi.getInputByName(midiInputSelect.options[midiInputSelect.selectedIndex].text);
     }
     midiInputSelect.addEventListener('change', getMidiInput)
-    
-    
 
-        
   }
 });
-
-let midiChannel = 1;
-let ccGuy = 31;
-let valueGuy = 127;
-
-const sliderGuy = document.getElementById('myRange');
-sliderGuy.addEventListener('input', function(e) {
-  e.preventDefault();   
-  socket.emit('midiTransport', {
-    channel: midiChannel,
-    cc: ccGuy,
-    value: sliderGuy.value
-  });
-})
 
 
 
@@ -46,19 +30,20 @@ const buttonBroadcast = document.getElementById('broadcaster');
 
 // setInterval(function() { buttonBroadcast.click() }, 20);
 
-
-buttonBroadcast.addEventListener('click', function(e) {
+buttonBroadcast.addEventListener('click', function (e) {
   e.preventDefault();
   // Listen to control change message on all channels
   input.addListener('controlchange', "all",
     function (e) {
-      console.log(e.controller.number);
-      socket.emit('midiTransport', {
+      console.log(`Chan: ${e.channel} / CC: ${e.data[1]} / Value: ${e.data[2]}`);
+      socket.emit('midiTransport-2', {
         channel: e.channel,
-        controller: e.controller.number,
         cc: e.data[1],
         value: e.data[2]
       });
     }
   );
+  socket.on('midiTransport-2', function (data) {
+    infoDiv.innerHTML = (`Chan: ${data.channel} / CC: ${data.cc} / Value: ${data.value}`);
+  })
 })
