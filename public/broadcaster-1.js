@@ -24,13 +24,36 @@ WebMidi.enable(function (err) {
   }
 });
 
+inc = 0;
+intervalChange = null;
+
+function sendIncrement() {
+  if (inc <= 127) {
+    console.log(Date.now())
+    socket.emit('midiTransport-1', {
+      channel: 1,
+      cc: 2,
+      value: inc,
+      time: Date.now()
+    });
+    inc++;
+  } else {
+    stopFunction();
+  }
+}
+
+function stopFunction() {
+  clearInterval(intervalChange);
+}
+
+
 
 
 const buttonBroadcast = document.getElementById('broadcaster');
 
 // setInterval(function() { buttonBroadcast.click() }, 20);
-
-buttonBroadcast.addEventListener('click', function(e) {
+buttonBroadcast.addEventListener('click', function(e) {  
+  intervalChange = setInterval(sendIncrement, 50);
   e.preventDefault();
   // Listen to control change message on all channels
   input.addListener('controlchange', "all",
@@ -39,37 +62,11 @@ buttonBroadcast.addEventListener('click', function(e) {
       socket.emit('midiTransport-1', {
         channel: e.channel,
         cc: e.data[1],        
-        value: e.data[2]
+        value: e.data[2],
+        time: e.timestamp
       });
     }
   );
-  
-  inc = 0;
-  let intervalChange = setInterval(sendIncrement, 50);
-
-  function sendIncrement() {        
-    if (inc < 127) {
-    socket.emit('midiTransport-1', {
-      channel: 1,
-      cc: 2,
-      value: inc
-    });
-    inc++;
-  } else {
-    stopFunction();
-  }
-}
-
-  function stopFunction() {
-    clearInterval(intervalChange);
-  }
-
-  
-  
-  sendIncrement();
-
-  
-
   socket.on('midiTransport-1', function (data) {
     infoDiv.innerHTML = (`Chan: ${data.channel} / CC: ${data.cc} / Value: ${data.value}`);
   })

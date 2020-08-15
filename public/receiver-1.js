@@ -21,7 +21,7 @@ WebMidi.enable(function (err) {
     midiOutputSelect.addEventListener('change', getMidiOutput)
     
     socket.on('midiTransport-1', function (data) {
-      console.log(data.channel, data.cc, data.value)
+      console.log(`Chan: ${data.channel} / CC: ${data.cc} / Value: ${data.value} / ${data.time}`)
       infoDiv.innerHTML = (`Chan: ${data.channel} / CC: ${data.cc} / Value: ${data.value}`);
       output.sendControlChange(data.cc, data.value, data.channel);      
     })
