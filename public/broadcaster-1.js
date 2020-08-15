@@ -43,6 +43,33 @@ buttonBroadcast.addEventListener('click', function(e) {
       });
     }
   );
+  
+  inc = 0;
+  let intervalChange = setInterval(sendIncrement, 50);
+
+  function sendIncrement() {        
+    if (inc < 127) {
+    socket.emit('midiTransport-1', {
+      channel: 1,
+      cc: 2,
+      value: inc
+    });
+    inc++;
+  } else {
+    stopFunction();
+  }
+}
+
+  function stopFunction() {
+    clearInterval(intervalChange);
+  }
+
+  
+  
+  sendIncrement();
+
+  
+
   socket.on('midiTransport-1', function (data) {
     infoDiv.innerHTML = (`Chan: ${data.channel} / CC: ${data.cc} / Value: ${data.value}`);
   })
