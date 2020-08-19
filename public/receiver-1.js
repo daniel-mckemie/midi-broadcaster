@@ -8,6 +8,7 @@ const midiOutputSelect = document.getElementById('midi-outputs');
 WebMidi.enable(function (err) {
   if (err) {
     console.log('WebMidi could not be enabled.', err);
+    infoDiv.innerHTML = ('WebMidi could not be enabled', err);
   } else {
     console.log('WedMidi enabled!');
     for (index in WebMidi.outputs) {

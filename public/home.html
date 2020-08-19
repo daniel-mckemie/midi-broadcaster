@@ -31,6 +31,9 @@
       Currently, the app/site can only be used by one pairing at a time. So if you see MIDI data appearing out of nowhere, or things
       are getting interrupted, it is probably being used by another person. Soon, users will have the ability to create sessions, 
       which will provide unique connections.</p>
+    <p><b>This will only work in browsers with Web MIDI API compatibility (Chrome, et al.) and will have trouble if your security settings are
+      not tooled properly. This has only been tested in Chrome on MacOS and Android.</b>
+    </p>
     <h3>Instructions</h3>
     <p>Simply open a broadcaster window, set an incoming port.  Then open a receiver window, and set an outgoing port.  The MIDI data from the incoming port
       in the broadcaster will be sent via WebSockets to the receiver page, and out the specified outgoing port.  This allows for a MIDI connection to
