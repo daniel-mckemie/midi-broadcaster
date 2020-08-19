@@ -17,17 +17,25 @@
       <select id="midi-transports">
         <option value="" selected disabled hidden>Choose output link</option>
       </select>
+
+      <button onclick="createSlider()" value="Create Slider">Create Slider</button>
       
-      <!-- <form action="setSliderAttributes()">
+      <form onsubmit="setSliderAttributes(channel, cc)">
         <label for="channel">Channel:</label><br>
         <input type="text" id="channel" name="channel"><br>
         <label for="cc">CC:</label><br>
         <input type="text" id="cc" name="cc"><br><br>
         <input type="submit" value="Submit">
-      </form>  -->
+      </form> 
 
-      <div class="slidecontainer">
+      <!-- <div class="slidecontainer">
         <input type="range" min="0" max="127" value="50" class="slider" id="myRange">
+      </div> -->
+
+      <div id="sliders">
+        <div class="slider-div" id="div">
+          <input type="range" min="0" max="100" value="0" class="slider-style" id="sliderr" value="100" visibility='none'>
+        </div>
       </div>
 
       <div class="flex-grid">

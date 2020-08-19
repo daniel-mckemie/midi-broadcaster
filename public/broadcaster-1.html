@@ -13,11 +13,22 @@
 
   <body>
     <div>      
-      <input type="button" value="SET CONTROLLER" id="broadcaster"></input>
+      
+      <div>
+      <input type="button" value="SET CONTROLLER/PORT" id="broadcaster"></input>
       <select id="midi-inputs">
         <option value="" selected disabled hidden>Choose MIDI Input</option>
       </select>
-      
+      </div>
+
+
+      <!-- <div>      
+      <input type="button" value="Start Clock" onclick="startClock()"></input>
+      <input type="button" value="Stop Clock" onclick="stopClock()"></input>
+      <label for="quantity">Set Clock Speed</label>
+      <input type="number" id="quantity" name="quantity" min="1" max="255">
+      </div> -->
+
       <div class="flex-grid">
         <div class="row" id="info"></div>
       </div>

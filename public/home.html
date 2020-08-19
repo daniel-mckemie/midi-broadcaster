@@ -1,32 +1,67 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <title></title>
-    <meta name="description" content="" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />    
-    <link rel="stylesheet" type="text/css" href="./styles/style.css">
-    
 
-  </head>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <title></title>
+  <meta name="description" content="" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" type="text/css" href="./styles/style.css">
 
-  <body>
-    <div>      
-      <h3>Broadcasters</h3>
-      <a href="/broadcaster-1" target="_blank">Broadcaster 1</a> <br />
-      <a href="/broadcaster-2" target="_blank">Broadcaster 2</a> <br />
-      <br />
-      
-      <h3>Receivers</h3>
-      <a href="/receiver-1" target="_blank">Receiver 1</a> <br />
-      <a href="/receiver-2" target="_blank">Receiver 2</a> <br />
-      <br />
 
-      
-    </div>
-    <script src="/socket.io/socket.io.js"></script>
-    <script src="webmidi.min.js"></script>
-    
-  </body>
+</head>
+
+<body>
+  <div>
+    <h1>MIDI Broadcaster Application</h1>
+    <h3>Broadcasters</h3>
+    <a href="/broadcaster-1" target="_blank">Broadcaster 1</a> <br />
+    <a href="/broadcaster-2" target="_blank">Broadcaster 2</a> <br />
+    <br />
+
+    <h3>Receivers</h3>
+    <a href="/receiver-1" target="_blank">Receiver 1</a> <br />
+    <a href="/receiver-2" target="_blank">Receiver 2</a> <br />
+    <br /><br />
+
+    <h3>Information</h3>
+    <p>This web app sends/receives MIDI data via WebSockets using the Web MIDI API. It is not necessary for users to be
+      connected to the same network, only to have the proper browser windows open.
+      Currently, the app/site can only be used by one pairing at a time. So if you see MIDI data appearing out of nowhere, or things
+      are getting interrupted, it is probably being used by another person. Soon, users will have the ability to create sessions, 
+      which will provide unique connections.</p>
+    <h3>Instructions</h3>
+    <p>Simply open a broadcaster window, set an incoming port.  Then open a receiver window, and set an outgoing port.  The MIDI data from the incoming port
+      in the broadcaster will be sent via WebSockets to the receiver page, and out the specified outgoing port.  This allows for a MIDI connection to
+      established between two people over the internet at any two points.
+    </p>
+    <p>The respective broadcaster/receiver numbers are paired (ie. Broadcaster 1 sends MIDI to Receiver 1), note the address URL
+      if using multiple pairings.  Set your input/output on each page, and you can send/receive MIDI information seamlessly over the net.
+      MIDI ports should be detected automatically (unless your security settings somehow prevent this, specifically in Windows).  
+      The site currently logs Channel/CC/Value info, but all MIDI data should be transferrable.</p>
+    <p>A broadcaster is capable of taking MIDI input from either software or hardware. Specify either the controller or
+      software port and press the button.</p>
+    <p>A receiver receives the data being sent out by the broadcaster, the user chooses the output port for where they
+      want the MIDI data to go in their system (either software or hardware).</p>
+    <p>The CC/Channel/Value is displayed on each page respectively. It is up to the user to assign the MIDI information
+      on their controller/software setups accordingly, this website just makes the connection.</p><br />
+    <h3>Extra Notes</h3>
+    <p>This is very much in a beta stage. Tests have been run to detect latency and efficiency, and this method of transmitting
+      MIDI data has performed very well so far. It remains to be seen what will cause performance levels to decrease, but it works well for one-to-one usage. 
+      I am interested in hearing any feedback regarding performance, or any ideas on how to build this out to be a more useful platform.  Especially during
+      lockdown restrictions.  Please be in touch if you are interested in collaborating on this!      
+    </p>
+
+
+
+
+
+
+  </div>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="webmidi.min.js"></script>
+
+</body>
+
 </html>
