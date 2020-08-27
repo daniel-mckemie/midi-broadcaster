@@ -57,13 +57,14 @@ buttonBroadcast.addEventListener('click', function (e) {
   // Listen to control change message on all channels
   input.addListener('controlchange', "all",
     function (e) {
-      // console.log(`Chan: ${e.channel} / CC: ${e.data[1]} / Value: ${e.data[2]} / ${e.timestamp}`);
+      console.log(`Chan: ${e.channel} / CC: ${e.data[1]} / Value: ${e.data[2]} / ${e.timestamp}`);
       socket.emit('midiTransport-1', {
         channel: e.channel,
         cc: e.data[1],
         value: e.data[2],
         time: e.timestamp
       });
+      // console.log(e)
     }
   );
   socket.on('midiTransport-1', function (data) {
